@@ -213,9 +213,142 @@ namespace Exercises
             Console.ReadKey();
         }
 
-        static void Task3_6()
+        static void Task3_6() // BMI with comments
         {
+            double BMI, kg, m;
+            string input;
+            Console.WriteLine("Enter your weight [kg]: ");
+            isCorrect(out input, out kg);
+            Console.WriteLine("Enter your height [m]: ");
+            isCorrect(out input, out m);
+            BMI = kg / (m * m);
 
+            if (BMI < 18.5)
+                Console.WriteLine($"Your BMI: {BMI} (< 18,5 - underweight)");
+            else if (BMI >= 25)
+                Console.WriteLine($"Your BMI: {BMI} (>= 25,0 - overweight)");
+            else
+                Console.WriteLine($"Your BMI: {BMI} (18,5-24,99 - normal)");
+            Console.ReadKey();
+        }
+
+        static void Task3_7() //writing out the day of the week depending on the number
+        {
+            Console.WriteLine("Enter the number of the day of the week ");
+            string number = Console.ReadLine();
+            switch (number)
+            {
+                case "1":
+                    Console.WriteLine("Monday");
+                    break;
+                case "2":
+                    Console.WriteLine("Tuesday");
+                    break;
+                case "3":
+                    Console.WriteLine("Wednesday");
+                    break;
+                case "4":
+                    Console.WriteLine("Thursday");
+                    break;
+                case "5":
+                    Console.WriteLine("Friday");
+                    break;
+                case "6":
+                    Console.WriteLine("Saturday");
+                    break;
+                case "7":
+                    Console.WriteLine("Sunday");
+                    break;
+                default:
+                    Console.WriteLine("There is no such day of the week ");
+                    break;
+            }
+            Console.ReadKey();
+        }
+
+        static void Task3_8() //the amount of the scholarship based on the grade point average 
+        {
+            double grades;
+            string input;
+            Console.WriteLine("Enter your average grades [2,00-5,00]: ");
+            isCorrect(out input, out grades);
+            if (grades >= 2 && grades <= 3.99)
+                Console.WriteLine($"Average grades: {grades} \t Scholarship amount: 0zl");
+            else if (grades >= 4 && grades <= 4.79)
+                Console.WriteLine($"Average grades: {grades} \t Scholarship amount: 350zl");
+            else if (grades >= 4.8 && grades <= 5)
+                Console.WriteLine($"Average grades: {grades} \t Scholarship amount: 550zl");
+            else
+                Console.WriteLine("Wrong value!");
+            Console.ReadKey();
+        }
+
+        static void Task3_9() //printing figures
+        {
+            int n;
+            string input, fig;
+            Console.WriteLine("Enter number of rows:");
+            isCorrect(out input, out n);
+            if (n < 0)
+                Console.WriteLine("Wrong value.");
+            else
+            {
+                Console.WriteLine("Fig. A");
+                for (int i = 1; i <= n; i++)
+                {
+                    for (int j = 1; j <= i; j++)
+                        Console.Write("*");
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine("Fig. B");
+                int tmp = n;
+                for (int i = 1; i <= n; i++)
+                {
+                    for (int j = tmp; j > 0; j--)
+                        Console.Write("*");
+                    tmp--;
+                    Console.WriteLine();
+                }
+
+                /*Console.WriteLine("Fig. C");
+                for (int i = 1; i <= n; i++)
+                {
+                    for (int j = 1; j <= i; j++)
+                        Console.Write("*");
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine("Fig. D");
+                for (int i = 1; i <= n; i++)
+                {
+                    for (int j = 1; j <= i; j++)
+                        Console.Write("*");
+                    Console.WriteLine();
+                }*/
+            }
+            Console.ReadKey();
+        }
+
+        static void Task3_10() // calculate n! (factorial)
+        {
+            int n;
+            double result = 1;
+            string input;
+            Console.WriteLine("Enter n value [integer]: ");
+            isCorrect(out input, out n);
+            if (n == 0)
+                Console.WriteLine($"{n}! = 1");
+            else if (n < 0)
+                Console.WriteLine("Wrong value! Try again and enter a non-negative integer");
+            else
+            {
+                for (int i = n; i > 0; i--)
+                {
+                    result *= i;
+                }
+                Console.WriteLine($"{n}! = {result}");
+            }
             Console.ReadKey();
         }
 
@@ -228,8 +361,12 @@ namespace Exercises
             //Task3_2();
             //Task3_3();
             //Task3_4();
-            Task3_5();
+            //Task3_5();
             //Task3_6();
+            //Task3_7();
+            //Task3_8();
+            Task3_9();
+            //Task3_10();
 
             //Console.ReadKey();
 
