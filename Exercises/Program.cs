@@ -286,7 +286,7 @@ namespace Exercises
         static void Task3_9() //printing figures
         {
             int n;
-            string input, fig;
+            string input;
             Console.WriteLine("Enter number of rows:");
             isCorrect(out input, out n);
             if (n < 0)
@@ -301,6 +301,7 @@ namespace Exercises
                     Console.WriteLine();
                 }
 
+                Console.WriteLine();
                 Console.WriteLine("Fig. B");
                 int tmp = n;
                 for (int i = 1; i <= n; i++)
@@ -311,21 +312,38 @@ namespace Exercises
                     Console.WriteLine();
                 }
 
-                /*Console.WriteLine("Fig. C");
+                Console.WriteLine();
+                Console.WriteLine("Fig. C");
                 for (int i = 1; i <= n; i++)
                 {
-                    for (int j = 1; j <= i; j++)
-                        Console.Write("*");
+                    for (int j = n; j > 0; j--)
+                    {
+                        if (j <= i)
+                            Console.Write("*");
+                        else
+                            Console.Write(" ");
+                    }     
                     Console.WriteLine();
                 }
 
+                Console.WriteLine();
                 Console.WriteLine("Fig. D");
                 for (int i = 1; i <= n; i++)
                 {
-                    for (int j = 1; j <= i; j++)
-                        Console.Write("*");
+                    for (int j = 1; j <= n; j++)
+                    {
+                        if (i == 1 || i == n)
+                            Console.Write("*");
+                        else
+                        {
+                            if (j == 1 || j == n)
+                                Console.Write("*");
+                            else
+                                Console.Write(" ");
+                        }
+                    }
                     Console.WriteLine();
-                }*/
+                }
             }
             Console.ReadKey();
         }
@@ -352,6 +370,93 @@ namespace Exercises
             Console.ReadKey();
         }
 
+        static void Task3_11() //Number of integers (count from 1) whose sum is greater than 100
+        {
+            int sum = 0,  x = 1;
+            while (sum < 100)
+            {
+                sum += x++;
+            }
+            Console.WriteLine($"{sum} > 100 \nNumber of integers: {--x}");
+            Console.ReadKey();
+        }
+
+        static void Task3_12() //Sum of integers given by user
+        {
+            int sum = 0, x;
+            string input;
+            Console.WriteLine("Enter an integers [0 to stop]: ");
+            do
+            {
+                //int.TryParse(Console.ReadLine(), out x);
+                isCorrect(out input, out x);
+                sum += x;
+            } while (x != 0);
+            Console.WriteLine($"Sum: {sum}");
+            Console.ReadKey();
+        }
+
+        static void Task3_13() //Calculate the sum of the series
+        {
+            int sum = 0, n;
+            string input;
+            Console.WriteLine("Enter a natural number: ");
+            isCorrect(out input, out n);
+            if (n <= 0)
+            {
+                Console.WriteLine("Wrong value!");
+                return;
+            }
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 == 0)
+                    sum -= i;
+                else
+                    sum += i;
+            }
+            Console.WriteLine($"The sum of the series [W(n)] = {sum}");
+            Console.ReadKey();
+        }
+
+        static void Task3_14() //find perfect numbers in the range <1,n>
+        {
+            int n;
+            string input;
+            Console.WriteLine("Enter a natural number: ");
+            isCorrect(out input, out n);
+            if (n <= 0)
+            {
+                Console.WriteLine("Wrong value!");
+                return;
+            }
+
+            int sum;
+            Console.WriteLine($"Perfect numbers in the range <1,{n}>");
+            for (int i = 1; i <= n; i++)
+            {
+                sum = 0;
+                for (int j = 1; j < i; j++)
+                {
+                    if (i % j == 0)
+                        sum += j;
+                }
+                if (i == sum)
+                    Console.Write($"{i} ");
+            }
+            Console.ReadKey();
+        }
+
+        static void Task3_15() //check how many different ways you can withdraw 10zl (having only 1zl, 2zl, 5zl coins)
+        {
+            for (int i = 0; i <= 10; i++)
+                for (int j = 0; j <= 5; j++)
+                    for (int k = 0; k <= 2; k++)
+                        if (i * 1 + j * 2 + k * 5 == 10)
+                            Console.WriteLine($"1zl: {i}\t2zl: {j}\t5zl: {k}");
+
+            Console.ReadKey();
+        }
+
         static void Main(string[] args)
         {
             //Task2_1();
@@ -365,10 +470,13 @@ namespace Exercises
             //Task3_6();
             //Task3_7();
             //Task3_8();
-            Task3_9();
+            //Task3_9();
             //Task3_10();
-
-            //Console.ReadKey();
+            //Task3_11();
+            //Task3_12();
+            //Task3_13();
+            //Task3_14();
+            Task3_15();
 
         }
     }
