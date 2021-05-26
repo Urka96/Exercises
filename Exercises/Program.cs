@@ -457,26 +457,113 @@ namespace Exercises
             Console.ReadKey();
         }
 
+        static void Task4_1() //make array with n-elements given by user
+        {
+            int n;
+            string input;
+            Console.WriteLine("Enter number of elements in array [int]: ");
+            isCorrect(out input, out n);
+            int[] tab = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                int x;
+                Console.Write($"Enter {i+1} value: ");
+                isCorrect(out input, out x);
+                tab[i] = x;
+            }
+            Console.WriteLine("Your array contains:");
+            foreach (int num in tab)
+            {
+                Console.Write($"{num} ");
+            }
+            Console.ReadKey();
+        }
+
+        static void Task4_2() //copy only positive values from one array to another
+        {
+            int[] tab1 = new int[10] { 1, -2, 3, 4, -5, 6, -7, 8, 9, 0 };
+            int[] tab2 = new int[10];
+            for(int i = 0; i < tab1.Length; i++)
+                if (tab1[i] > 0)
+                    tab2[i] = tab1[i];
+
+            Console.WriteLine("Second array contains:");
+            foreach (int num in tab2)
+                Console.Write($"{num} ");
+            Console.ReadKey();
+        }
+
+        static void Task4_3() //display information about array (min, max, average, number of positives)
+        {
+            int n;
+            string input;
+            Console.WriteLine("Enter number of elements in array [int]: ");
+            isCorrect(out input, out n);
+            int[] tab = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                int x;
+                Console.Write($"Enter {i + 1} value: ");
+                isCorrect(out input, out x);
+                tab[i] = x;
+            }
+            int count = 0;
+            for (int i = 0; i < tab.Length; i++)
+                if (tab[i] > 0)
+                    count++;
+            Console.WriteLine($"Max element: {tab.Max()}\t index: {Array.IndexOf(tab, tab.Max())}");
+            Console.WriteLine($"Min element: {tab.Min()}\t index: {Array.IndexOf(tab, tab.Min())}");
+            Console.WriteLine($"Average value in array: {tab.Average()}");
+            Console.WriteLine($"Number of positive values: {count}");
+            Console.ReadKey();
+        }
+
+        static void Task4_4() //how many prime numbers are in an array with 100 elements?
+        {
+            int[] tab = new int[100];
+            Random rand = new Random();
+            for (int i = 0; i < tab.Length; i++)
+                tab[i] = rand.Next(1, 1000);
+
+            int count = 0; bool isPrime;
+            for (int i = 0; i < tab.Length; i++)
+            {
+                isPrime = true;
+                for (int j = 2; j < tab[i]; j++)
+                    if (tab[i] % j == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                if (isPrime && tab[i] != 1)
+                {
+                    count++;
+                    Console.Write($"{tab[i]} ");
+                }
+            }
+            Console.WriteLine($"\nPrime numbers: {count}");    
+            Console.ReadKey();
+        }
+
+        static void Task4_5() //copying from one array to another with a shift of 1 position
+        {
+            int[] tab1 = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int[] tab2 = new int[10];
+            Array.Copy(tab1, tab1.Length - 1, tab2, 0, 1);
+            Array.Copy(tab1, 0, tab2, 1, tab1.Length - 1);
+
+            Console.WriteLine("Seond array contains:");
+            foreach (int num in tab2)
+            {
+                Console.Write($"{num} ");
+            }
+            Console.ReadKey();
+        }
+
         static void Main(string[] args)
         {
-            //Task2_1();
-            //Task2_2();
-            //Task2_3();
-            //Task3_1();
-            //Task3_2();
-            //Task3_3();
-            //Task3_4();
-            //Task3_5();
-            //Task3_6();
-            //Task3_7();
-            //Task3_8();
-            //Task3_9();
-            //Task3_10();
-            //Task3_11();
-            //Task3_12();
-            //Task3_13();
-            //Task3_14();
-            Task3_15();
+
+            Task4_5();
 
         }
     }
